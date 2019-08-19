@@ -14,10 +14,16 @@
     {{school.name}}
     <div>{{school.name}}</div>
     <div>{{school.age}}</div>
+    <!--    如果数据不变 视图就不会刷新-->
+    {{getNewName}}
+
     <ul>
-        <li>1</li>
-        <li>2</li>
+        <li>我是魔鬼1</li>
+        <li>我是魔鬼2</li>
     </ul>
+
+    <button v-on:click="change">更新操作</button>
+    <div v-html="message"></div>
 </div>
 
 <script src="mvvm.js"></script>
@@ -27,8 +33,19 @@
         el: "#app",
         data: {
             school: {
-                name: '珠峰',
+                name: '美院',
                 age: '18'
+            },
+            message:'<h1>hello v-html</h1>'
+        },
+        computed:{
+            getNewName(){
+                return this.school.name + '架构'
+            }
+        },
+        methods: {
+            change(){
+                this.school.name = '张国的methods'
             }
         }
     })
